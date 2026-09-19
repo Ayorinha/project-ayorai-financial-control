@@ -1,102 +1,37 @@
-# Project Ayorai — Financial Control and Receivables Analytics
+# Project Ayorai — Financial Control
 
-## Overview
+Runnable synthetic-data project demonstrating financial reconciliation and state-level analytics.
 
-Project Ayorai is a financial control and receivables analytics solution designed to support structured monitoring of financial transactions, outstanding balances, advance payments, and state-level transfers.
+## Run
 
-This project demonstrates a data-driven approach to financial tracking and reporting, enabling daily monitoring and strategic decision-making through interactive dashboards.
+```bash
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# Linux/macOS: source .venv/bin/activate
+pip install -r requirements.txt
+python financial_control.py
+```
 
-All data used in this repository is fictitious and created for demonstration purposes only.
+The script generates:
 
----
+- `output/financial_report.csv`
+- `output/state_summary.csv`
 
-## Business Problem
+## Metrics
 
-Financial operations often require detailed tracking of:
+- issued amount
+- received amount
+- outstanding amount
+- collection rate
+- settlement status
+- state-level aggregation
 
-- Issued amounts
-- Received payments
-- Outstanding balances
-- Advance payments
-- Financial transfers
-- State-level financial reporting
+All sample data is fictitious. No institutional or personal financial data is included.
 
-This project addresses these needs by providing a structured data model and visualization layer.
+## Next engineering layer
 
----
-
-## Key Features
-
-- Financial control by company and state
-- Monitoring of received and outstanding amounts
-- Tracking of advance payments
-- State-level reporting
-- Loss identification based on time criteria
-- Daily financial monitoring
-- Strategic dashboards
-
----
-
-## Technologies Used
-
-- Data Modeling
-- SQL (data structure simulation)
-- Python (data processing simulation)
-- Dashboard Visualization
-- Data Architecture Concepts
-- Financial Analytics
-
----
-
-## Data Structure
-
-Main fields used in the system:
-
-- Company
-- State
-- Month
-- Issue_Date
-- Issued_Amount
-- Deposit_Date
-- Deposit_Account
-- Received_Amount
-- Outstanding_Amount
-- Advance_Amount
-- Transfer_Amount
-- Transfer_Date
-- Loss_Status
-
----
-
-## Dashboards
-
-This project includes financial dashboards demonstrating:
-
-- Total Issued
-- Total Received
-- Outstanding Amounts
-- State-Level Reports
-- Loss Monitoring
-- Financial Transfers
-
-See images inside the **/images** folder.
-
----
-
-## Project Status
-
-In development — continuous improvements planned.
-
-Future improvements may include:
-
-- Predictive analytics
-- Risk classification models
-- Automated financial alerts
-- Machine learning integration
-
----
+The repository can later add a dashboard, database adapter, reconciliation rules and scheduled ingestion without changing the core analytical contract.
 
 ## Author
 
-Anderson Leon Ayora  
-Data Engineering | Data Architecture | Data Science | Artificial Intelligence
+**Anderson Leon Ayora** — Data Scientist | AI Engineer | Data Architect
