@@ -18,7 +18,15 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+      - name: Install quality tools
+        run: python -m pip install ruff pip-audit
+      - name: Lint
+        run: ruff check .
       - name: Compile
         run: python -m compileall -q .
+      - name: Tests
+        run: pytest -q
+      - name: Dependency audit
+        run: pip-audit -r requirements.txt
       - name: Run application
         run: python financial_control.py
