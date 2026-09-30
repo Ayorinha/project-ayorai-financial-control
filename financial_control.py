@@ -27,8 +27,12 @@ def build_report(rows: Iterable[Mapping[str, object]] = SAMPLE) -> pd.DataFrame:
     if (df["outstanding"] != df["issued"] - df["received"]).any():
         raise ValueError("outstanding must equal issued - received")
     df["collection_rate"] = (df["received"] / df["issued"]).where(df["issued"] != 0, 0).round(4)
-    df["status"] = df["outstanding"].map(lambda value: "OPEN" if value > 0 else "SETTLED")
+    df["status"] = df["outstanding"].map(lambda value: "PARTIAL" if value > 0 else "SETTLED")
     return df
+
+
+def validate_and_enrich(data: pd.DataFrame) -> pd.DataFrame:
+    return build_report(data.to_dict("records"))
 
 
 def build_state_summary(report: pd.DataFrame) -> pd.DataFrame:
