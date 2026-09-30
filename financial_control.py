@@ -17,7 +17,7 @@ def build_report(rows: Iterable[Mapping[str, object]] = SAMPLE) -> pd.DataFrame:
     df = pd.DataFrame(list(rows))
     missing = [c for c in REQUIRED_COLUMNS if c not in df.columns]
     if missing:
-        raise ValueError(f"missing required columns: {missing}")
+        raise ValueError(f"Missing required columns: {missing}")
     for column in ("issued", "received", "outstanding"):
         df[column] = pd.to_numeric(df[column], errors="raise")
     if (df[["issued", "received", "outstanding"]] < 0).any().any():
